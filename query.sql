@@ -7,8 +7,14 @@ with user_amount_by_organization as (
 	select organizations.org_id, industry, country
 	from activity.organizations
 	where organizations.org_id in (select org_id from user_amount_by_organization)
+), failed_logins as (
+	select users.user_id, role, organizations.industry, count(login_logs) as failed_login_count
+	from activity.login_logs
+	inner join activity.users on login_logs.user_id = users.user_id
+	inner join activity.organizations on users.org_id = organizations.org_id
+	where login_logs.status = 'Success'
+	group by users.user_id, organizations.industry
 )
-
 select *
-from big_organizations
-
+from failed_logins
+order by failed_logins.failed_login_count desc

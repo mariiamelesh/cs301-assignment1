@@ -6,6 +6,6 @@ Purpose of the query is to locate the weak points of the system by pointing out 
 ## Initialization instruction
 For quick start, run the `init_db.sql` file from PostgreSQL connection. It will create a schema, create tables and insert the data into tables. After initialization, query can be executed from `query.sql` file.
 ## Sources
-Dataset: https://www.kaggle.com/datasets/nudratabbas/sql-practice-dataset-3-hard-queries
-Insert queries: PostgreSQL Table-to-SQL feature
+Dataset: https://www.kaggle.com/datasets/nudratabbas/sql-practice-dataset-3-hard-queries  
+Insert queries: PostgreSQL Table-to-SQL feature  
 Query idea inspiration: https://www.kaggle.com/code/nudratabbas/sql-practice-series-3-hard-starter-notebook

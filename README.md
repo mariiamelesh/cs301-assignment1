@@ -9,3 +9,4 @@ For quick start, run the `init_db.sql` file from PostgreSQL connection. It will 
 Dataset: https://www.kaggle.com/datasets/nudratabbas/sql-practice-dataset-3-hard-queries  
 Insert queries: PostgreSQL Table-to-SQL feature  
 Query idea inspiration: https://www.kaggle.com/code/nudratabbas/sql-practice-series-3-hard-starter-notebook
+### trigger warning: barely readable code. beware! :P

@@ -29,7 +29,7 @@ with user_amount_by_organization as (
 	where severity = 'Critical'
 	group by big_organizations.org_id, big_organizations.industry, systems.os_type)
 )
-select user_id, industry, role as error_source, failed_login_count as failure_count, 
+select user_id as id, industry, role as error_source, failed_login_count as failure_count, 
 case when user_id like 'U%' then 'user failure'
 when user_id like 'ORG%' then 'system failure'
 end failure_type

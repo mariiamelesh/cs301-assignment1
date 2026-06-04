@@ -8,12 +8,12 @@ with user_amount_by_organization as (
 	from activity.organizations
 	where organizations.org_id in (select org_id from user_amount_by_organization)
 ), failed_logins as (
-	select users.user_id, big_organizations.industry, role, count(login_logs) as failed_login_count
+	select users.user_id, big_organizations.industry, role, count(login_logs.login_id) as failed_login_count
 	from activity.login_logs
 	inner join activity.users on login_logs.user_id = users.user_id
 	inner join big_organizations on users.org_id = big_organizations.org_id
 	where login_logs.status = 'Failed'
-	group by users.user_id, big_organizations.industry
+	group by users.user_id, big_organizations.industry, role
 ), system_failures as (
 	(select big_organizations.org_id, big_organizations.industry, systems.os_type, count(incident_id) as incident_count
 	from activity.security_incidents

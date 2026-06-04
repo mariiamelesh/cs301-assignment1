@@ -14,7 +14,21 @@ with user_amount_by_organization as (
 	inner join activity.organizations on users.org_id = organizations.org_id
 	where login_logs.status = 'Failed'
 	group by users.user_id, organizations.industry
+), system_failures as (
+	(select organizations.industry, systems.os_type, count(incident_id) as incident_count
+	from activity.security_incidents
+	inner join activity.organizations on security_incidents.org_id = organizations.org_id
+	inner join activity.systems on organizations.org_id = systems.org_id
+	where severity = 'Critical'
+	group by organizations.org_id, organizations.industry, systems.os_type)
+	union all
+	(select organizations.industry, systems.os_type, count(event_id) as incident_count
+	from activity.network_events
+	inner join activity.systems on network_events.system_id = systems.system_id
+	inner join activity.organizations on systems.org_id = organizations.org_id
+	where severity = 'Critical'
+	group by organizations.org_id, organizations.industry, systems.os_type)
 )
+
 select *
-from failed_logins
-order by failed_logins.failed_login_count desc
+from system_failures

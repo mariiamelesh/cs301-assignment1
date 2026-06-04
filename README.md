@@ -1,4 +1,5 @@
 # Practice Lab 1
+### trigger warning: barely readable code. beware! :P  
 ## Dataset description
 Dataset used for querying consists of 7 tables and shows data from a security system logger. It contains information on users(`users` table), organizations users belong to('organizations' table), systems users use(`systems` table) and login attempts from users(`login_logs` table). Additionally, there is an event log, where events are ranked by severity(`network_events` table); a security incident log with incident type and severity rank (`security_incident` table).
 ## Query description
@@ -9,4 +10,3 @@ For quick start, run the `init_db.sql` file from PostgreSQL connection. It will 
 Dataset: https://www.kaggle.com/datasets/nudratabbas/sql-practice-dataset-3-hard-queries  
 Insert queries: PostgreSQL Table-to-SQL feature  
 Query idea inspiration: https://www.kaggle.com/code/nudratabbas/sql-practice-series-3-hard-starter-notebook
-### trigger warning: barely readable code. beware! :P

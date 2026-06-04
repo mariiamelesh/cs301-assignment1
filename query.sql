@@ -12,7 +12,7 @@ with user_amount_by_organization as (
 	from activity.login_logs
 	inner join activity.users on login_logs.user_id = users.user_id
 	inner join activity.organizations on users.org_id = organizations.org_id
-	where login_logs.status = 'Success'
+	where login_logs.status = 'Failed'
 	group by users.user_id, organizations.industry
 )
 select *
